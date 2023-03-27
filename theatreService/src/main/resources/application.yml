@@ -1,0 +1,36 @@
+
+server:
+  port: 9004
+
+spring:
+  application:
+    name: THEATRE-SERVICE
+  datasource:
+    password: root
+    url: jdbc:postgresql://localhost:5432/TheatreService
+    username: postgres
+  jpa:
+    open-in-view: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  main:
+    allow-circular-references : true
+  config:
+    import: optional:configserver:http://localhost:7777
+
+logging:
+  level:
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
